@@ -318,7 +318,7 @@ export default function Lab1() {
       </a>
       to get dummy text
       <br />
-      <a href="YOUR_GITHUB_REPO_URL" id="wd-github">
+      <a href="https://github.com/Bcone222/kambaz-next-js.git" id="wd-github">
         My GitHub Repository
       </a>
     </div>

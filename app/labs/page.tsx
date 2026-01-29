@@ -20,6 +20,11 @@ export default function labs() {
             Lab 3: JavaScript Fundamentals
           </Link>
         </li>
+        <li>
+          <Link href="/" id="wd-kambaz-link">
+            Kambaz
+          </Link>
+        </li>
       </ul>
     </div>
   );
