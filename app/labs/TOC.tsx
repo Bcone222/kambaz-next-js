@@ -1,46 +1,43 @@
 "use client";
-
-import Link from "next/link";
 import { Nav, NavItem, NavLink } from "react-bootstrap";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 export default function TOC() {
+  const pathname = usePathname();
   return (
-    <>
-      <h1>Brooklyn Cone</h1>
-      <h2>Labs</h2>
-
-      <Nav variant="pills">
-        <NavItem>
-          <NavLink as={Link} href="/labs" id="wd-labs-home-link">
-            Labs
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink as={Link} href="/labs/lab1" id="wd-lab1-link">
-            Lab 1
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink as={Link} href="/labs/lab2" id="wd-lab2-link">
-            Lab 2
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink as={Link} href="/labs/lab3" id="wd-lab3-link">
-            Lab 3
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink as={Link} href="/" id="wd-kambaz-link">
-            Kambaz
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink as={Link} href="https://github.com/Bcone222/kambaz-next-js" id="wd-github">
-            My GitHub
-          </NavLink>
-        </NavItem>
-      </Nav>
-    </>
+    <Nav variant="pills">
+      <NavItem>
+        <NavLink href="/labs" as={Link}
+          className={`nav-link ${pathname.endsWith("labs") ? "active" : ""}`}>
+          Labs
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/labs/lab1" as={Link}
+          className={`nav-link ${pathname.endsWith("lab1") ? "active" : ""}`}>
+          Lab 1
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/labs/lab2" as={Link}
+          className={`nav-link ${pathname.endsWith("lab2") ? "active" : ""}`}>
+          Lab 2
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/labs/lab3" as={Link}
+          className={`nav-link ${pathname.endsWith("lab3") ? "active" : ""}`}>
+          Lab 3
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/" as={Link}>
+          Kambaz
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="https://github.com/Bcone222/kambaz-next-js.git">My GitHub</NavLink>
+      </NavItem>
+    </Nav>
   );
 }
