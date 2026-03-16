@@ -19,7 +19,7 @@ export default function Signup() {
         placeholder="verify password"
         type="password"
       />
-      <Link className="btn btn-primary w-100 mb-2" href="/account/profile">
+      <Link className="btn btn-primary w-100 mb-2" href="/account/signin">
         Sign up
       </Link>
       <Link className="text-primary text-decoration-none" href="/account/signin">

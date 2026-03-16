@@ -1,16 +1,12 @@
-// No 'use client' → this is a Server Component (default)
 import fs from "node:fs";
 export default function ServerComponentDemo() {
-  // Server components can access server-only APIs like 'process' and 'fs'
   const processInfo = {
     platform: process.platform,
     nodeVersion: process.version,
     memoryUsage: process.memoryUsage(),
     cwd: process.cwd(),
   };
-  // Get the current time on the server
   const serverRenderTime = new Date().toLocaleTimeString();
-  // List files in the current working directory (project root)
   const projectRoot = process.cwd();
   let files: string[] = [];
   try {

@@ -1,7 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
 export default function ClientComponentDemo() {
-  // This runs ONLY in the browser
   const pathname = usePathname();
   return (
     <div>
