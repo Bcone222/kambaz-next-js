@@ -1,28 +1,56 @@
+"use client";
+
 import Link from "next/link";
-import { FormControl, Button } from "react-bootstrap";
+import { useRouter } from "next/navigation";
+import { setCurrentUser } from "../reducer";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { FormControl } from "react-bootstrap";
+import * as client from "../client";
 
 export default function Signup() {
+  const [user, setUser] = useState<Record<string, string>>({
+    username: "",
+    password: "",
+  });
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const signup = async () => {
+    try {
+      const currentUser = await client.signup(user);
+      dispatch(setCurrentUser(currentUser));
+      router.push("/account/profile");
+    } catch {
+      /* username taken */
+    }
+  };
+
   return (
-    <div id="wd-signup-screen" className="p-4">
+    <div className="wd-signup-screen">
       <h1>Sign up</h1>
       <FormControl
-        className="mb-2 wd-username"
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.target.value })}
+        className="wd-username mb-2"
         placeholder="username"
       />
       <FormControl
-        className="mb-2 wd-password"
+        value={user.password}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        className="wd-password mb-2"
         placeholder="password"
         type="password"
       />
-      <FormControl
-        className="mb-2 wd-password-verify"
-        placeholder="verify password"
-        type="password"
-      />
-      <Link className="btn btn-primary w-100 mb-2" href="/account/signin">
+      <button
+        type="button"
+        onClick={signup}
+        className="wd-signup-btn btn btn-primary mb-2 w-100"
+      >
         Sign up
-      </Link>
-      <Link className="text-primary text-decoration-none" href="/account/signin">
+      </button>
+      <br />
+      <Link href="/account/signin" className="wd-signin-link">
         Sign in
       </Link>
     </div>

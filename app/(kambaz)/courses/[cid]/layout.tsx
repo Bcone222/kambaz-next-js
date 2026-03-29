@@ -12,7 +12,9 @@ export default function CoursesLayout({ children }: { children: ReactNode }) {
   const { courses } = useSelector((state: RootState) => state.coursesReducer);
   const { currentUser } = useSelector((state: RootState) => state.accountReducer);
   const { enrollments } = useSelector((state: RootState) => state.enrollmentsReducer);
-  const course = courses.find((c: any) => c._id === cid);
+  const course = courses.find((c: any) => c._id === cid) as
+    | { _id: string; name: string }
+    | undefined;
   const [showNav, setShowNav] = useState(true);
 
   const isEnrolled = !currentUser || enrollments.some(

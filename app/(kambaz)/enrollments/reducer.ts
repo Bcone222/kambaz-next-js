@@ -1,15 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { enrollments } from "../database";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-  enrollments: enrollments,
+  enrollments: [] as unknown[],
 };
 
 const enrollmentsSlice = createSlice({
   name: "enrollments",
   initialState,
   reducers: {
+    setEnrollments: (
+      state,
+      { payload }: { payload: typeof initialState.enrollments }
+    ) => {
+      state.enrollments = payload;
+    },
     enroll: (state, { payload: { userId, courseId } }: { payload: { userId: string; courseId: string } }) => {
       const newEnrollment = {
         _id: uuidv4(),
@@ -26,5 +31,5 @@ const enrollmentsSlice = createSlice({
   },
 });
 
-export const { enroll, unenroll } = enrollmentsSlice.actions;
+export const { setEnrollments, enroll, unenroll } = enrollmentsSlice.actions;
 export default enrollmentsSlice.reducer;

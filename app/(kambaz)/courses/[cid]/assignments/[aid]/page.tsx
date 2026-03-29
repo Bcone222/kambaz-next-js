@@ -2,9 +2,16 @@
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../store";
-import { addAssignment, updateAssignment } from "../reducer";
+import {
+  addAssignment,
+  updateAssignment,
+  setAssignmentsForCourse,
+} from "../reducer";
 import { useState, useEffect } from "react";
 import { FormControl, Button } from "react-bootstrap";
+import * as client from "../client";
+
+const CAN_EDIT_ASSIGNMENTS_ROLES = ["FACULTY", "ADMIN", "TA"];
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -16,10 +23,12 @@ export default function AssignmentEditor() {
   const { currentUser } = useSelector(
     (state: RootState) => state.accountReducer
   );
-  const isFaculty = ["FACULTY", "ADMIN", "TA"].includes(currentUser?.role);
+  const canEditAssignments =
+    !!currentUser && CAN_EDIT_ASSIGNMENTS_ROLES.includes(currentUser.role);
 
   const isNew = aid === "new";
   const existingAssignment = assignments.find((a: any) => a._id === aid);
+  const [courseAssignmentsLoaded, setCourseAssignmentsLoaded] = useState(false);
 
   const [assignment, setAssignment] = useState<any>({
     title: "New Assignment",
@@ -32,15 +41,53 @@ export default function AssignmentEditor() {
   });
 
   useEffect(() => {
+    if (!cid) return;
+    let ignore = false;
+    setCourseAssignmentsLoaded(isNew);
+    (async () => {
+      const data = await client.findAssignmentsForCourse(cid as string);
+      if (ignore) return;
+      dispatch(
+        setAssignmentsForCourse({
+          courseId: cid as string,
+          assignments: data,
+        })
+      );
+      if (aid !== "new" && !data.some((a: any) => a._id === aid)) {
+        router.push(`/courses/${cid}/assignments`);
+        return;
+      }
+      setCourseAssignmentsLoaded(true);
+    })();
+    return () => {
+      ignore = true;
+    };
+  }, [cid, aid, dispatch, router, isNew]);
+
+  useEffect(() => {
+    if (isNew && !canEditAssignments) {
+      router.replace(`/courses/${cid}/assignments`);
+    }
+  }, [isNew, canEditAssignments, cid, router]);
+
+  useEffect(() => {
     if (!isNew && existingAssignment) {
       setAssignment(existingAssignment);
     }
   }, [existingAssignment, isNew]);
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    if (!canEditAssignments) return;
     if (isNew) {
-      dispatch(addAssignment({ ...assignment, course: cid }));
+      const { _id: _drop, ...createPayload } = assignment;
+      void _drop;
+      const created = await client.createAssignmentForCourse(
+        cid as string,
+        createPayload
+      );
+      dispatch(addAssignment(created));
     } else {
+      await client.updateAssignmentOnServer(assignment);
       dispatch(updateAssignment(assignment));
     }
     router.push(`/courses/${cid}/assignments`);
@@ -49,6 +96,10 @@ export default function AssignmentEditor() {
   const handleCancel = () => {
     router.push(`/courses/${cid}/assignments`);
   };
+
+  if (!isNew && !courseAssignmentsLoaded) {
+    return <div className="p-3">Loading assignment…</div>;
+  }
 
   return (
     <div id="wd-assignments-editor" className="p-3">
@@ -59,6 +110,8 @@ export default function AssignmentEditor() {
         <FormControl
           id="wd-name"
           value={assignment.title}
+          readOnly={!canEditAssignments}
+          disabled={!canEditAssignments}
           onChange={(e) =>
             setAssignment({ ...assignment, title: e.target.value })
           }
@@ -74,6 +127,8 @@ export default function AssignmentEditor() {
           id="wd-description"
           rows={4}
           value={assignment.description}
+          readOnly={!canEditAssignments}
+          disabled={!canEditAssignments}
           onChange={(e) =>
             setAssignment({ ...assignment, description: e.target.value })
           }
@@ -91,10 +146,12 @@ export default function AssignmentEditor() {
             id="wd-points"
             type="number"
             value={assignment.points}
+            readOnly={!canEditAssignments}
+            disabled={!canEditAssignments}
             onChange={(e) =>
               setAssignment({
                 ...assignment,
-                points: parseInt(e.target.value) || 0,
+                points: parseInt(e.target.value, 10) || 0,
               })
             }
           />
@@ -114,7 +171,8 @@ export default function AssignmentEditor() {
               id="wd-due-date"
               type="date"
               value={assignment.dueDate || ""}
-              disabled={!isFaculty}
+              readOnly={!canEditAssignments}
+              disabled={!canEditAssignments}
               onChange={(e) =>
                 setAssignment({ ...assignment, dueDate: e.target.value })
               }
@@ -129,7 +187,8 @@ export default function AssignmentEditor() {
                 id="wd-available-from"
                 type="date"
                 value={assignment.availableFrom || ""}
-                disabled={!isFaculty}
+                readOnly={!canEditAssignments}
+                disabled={!canEditAssignments}
                 onChange={(e) =>
                   setAssignment({
                     ...assignment,
@@ -146,7 +205,8 @@ export default function AssignmentEditor() {
                 id="wd-available-until"
                 type="date"
                 value={assignment.availableUntil || ""}
-                disabled={!isFaculty}
+                readOnly={!canEditAssignments}
+                disabled={!canEditAssignments}
                 onChange={(e) =>
                   setAssignment({
                     ...assignment,
@@ -161,16 +221,14 @@ export default function AssignmentEditor() {
 
       <hr />
       <div className="d-flex justify-content-end">
-        <Button
-          variant="secondary"
-          className="me-2"
-          onClick={handleCancel}
-        >
-          Cancel
+        <Button variant="secondary" className="me-2" onClick={handleCancel}>
+          {canEditAssignments ? "Cancel" : "Back"}
         </Button>
-        <Button variant="danger" onClick={handleSave}>
-          Save
-        </Button>
+        {canEditAssignments && (
+          <Button variant="danger" onClick={handleSave}>
+            Save
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -3,12 +3,13 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignmentsForCourse } from "./reducer";
 import { FormControl, InputGroup, Button, Dropdown } from "react-bootstrap";
 import { FaSearch, FaPlus, FaEllipsisV } from "react-icons/fa";
 import { BsGripVertical, BsFileEarmarkText } from "react-icons/bs";
 import GreenCheckmark from "../modules/GreenCheckmark";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import * as client from "./client";
 
 const CAN_EDIT_ASSIGNMENTS_ROLES = ["FACULTY", "ADMIN", "TA"];
 
@@ -24,19 +25,35 @@ export default function Assignments() {
     currentUser && CAN_EDIT_ASSIGNMENTS_ROLES.includes(currentUser.role);
   const dispatch = useDispatch();
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [assignmentToDelete, setAssignmentToDelete] = useState<string | null>(null);
-
-  const courseAssignments = assignments.filter(
-    (a: any) => a.course === cid
+  const [assignmentToDelete, setAssignmentToDelete] = useState<string | null>(
+    null
   );
+
+  const loadAssignments = useCallback(async () => {
+    if (!cid) return;
+    const data = await client.findAssignmentsForCourse(cid as string);
+    dispatch(
+      setAssignmentsForCourse({
+        courseId: cid as string,
+        assignments: data,
+      })
+    );
+  }, [cid, dispatch]);
+
+  useEffect(() => {
+    loadAssignments();
+  }, [loadAssignments]);
+
+  const courseAssignments = assignments.filter((a: any) => a.course === cid);
 
   const handleDeleteClick = (assignmentId: string) => {
     setAssignmentToDelete(assignmentId);
     setShowDeleteDialog(true);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (assignmentToDelete) {
+      await client.deleteAssignmentOnServer(assignmentToDelete);
       dispatch(deleteAssignment(assignmentToDelete));
     }
     setShowDeleteDialog(false);
@@ -47,18 +64,26 @@ export default function Assignments() {
     <div id="wd-assignments" className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <InputGroup style={{ width: "300px" }}>
-          <InputGroup.Text><FaSearch /></InputGroup.Text>
+          <InputGroup.Text>
+            <FaSearch />
+          </InputGroup.Text>
           <FormControl placeholder="Search..." id="wd-search-assignment" />
         </InputGroup>
         <div>
           {canEditAssignments && (
             <>
-              <Button id="wd-add-assignment-group" variant="secondary" className="me-2">
-                <FaPlus className="me-1" />Group
+              <Button
+                id="wd-add-assignment-group"
+                variant="secondary"
+                className="me-2"
+              >
+                <FaPlus className="me-1" />
+                Group
               </Button>
               <Link href={`/courses/${cid}/assignments/new`}>
                 <Button id="wd-add-assignment" variant="danger">
-                  <FaPlus className="me-1" />Assignment
+                  <FaPlus className="me-1" />
+                  Assignment
                 </Button>
               </Link>
             </>
@@ -78,13 +103,22 @@ export default function Assignments() {
           </h3>
         </div>
         <div className="d-flex align-items-center">
-          <span className="border rounded-pill px-3 py-1 me-2 small">40% of Total</span>
-          <Button variant="light" size="sm" className="me-1 border"><FaPlus /></Button>
-          <Button variant="light" size="sm" className="border"><FaEllipsisV /></Button>
+          <span className="border rounded-pill px-3 py-1 me-2 small">
+            40% of Total
+          </span>
+          <Button variant="light" size="sm" className="me-1 border">
+            <FaPlus />
+          </Button>
+          <Button variant="light" size="sm" className="border">
+            <FaEllipsisV />
+          </Button>
         </div>
       </div>
 
-      <ul className="list-unstyled mb-0 border-start border-success border-5" id="wd-assignment-list">
+      <ul
+        className="list-unstyled mb-0 border-start border-success border-5"
+        id="wd-assignment-list"
+      >
         {courseAssignments.map((assignment: any) => (
           <li
             key={assignment._id}
@@ -100,8 +134,10 @@ export default function Assignments() {
                 {assignment.title}
               </Link>
               <div className="text-secondary small">
-                Multiple Modules | <b>Not available until</b> {assignment.availableFrom || "—"} at 12:00am |{" "}
-                <b>Due</b> {assignment.dueDate || "—"} at 11:59pm | {assignment.points ?? 0} pts
+                Multiple Modules | <b>Not available until</b>{" "}
+                {assignment.availableFrom || "—"} at 12:00am | <b>Due</b>{" "}
+                {assignment.dueDate || "—"} at 11:59pm | {assignment.points ?? 0}{" "}
+                pts
               </div>
             </div>
             <div className="d-flex align-items-center ms-3 flex-shrink-0">
