@@ -38,7 +38,9 @@ export const updateCourse = async (
 };
 
 export const findModulesForCourse = async (courseId: string) => {
-  const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
+  const response = await axiosWithCredentials.get(
+    `${COURSES_API}/${courseId}/modules`
+  );
   return response.data;
 };
 
@@ -46,7 +48,7 @@ export const createModuleForCourse = async (
   courseId: string,
   module: Record<string, unknown>
 ) => {
-  const response = await axios.post(
+  const response = await axiosWithCredentials.post(
     `${COURSES_API}/${courseId}/modules`,
     module
   );
@@ -54,11 +56,11 @@ export const createModuleForCourse = async (
 };
 
 export const deleteModule = async (moduleId: string) => {
-  await axios.delete(`${MODULES_API}/${moduleId}`);
+  await axiosWithCredentials.delete(`${MODULES_API}/${moduleId}`);
 };
 
 export const updateModuleOnServer = async (
   module: { _id: string } & Record<string, unknown>
 ) => {
-  await axios.put(`${MODULES_API}/${module._id}`, module);
+  await axiosWithCredentials.put(`${MODULES_API}/${module._id}`, module);
 };

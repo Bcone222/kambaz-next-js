@@ -8,18 +8,18 @@ const ASSIGNMENTS_API = `${HTTP_SERVER}/api/assignments`;
 
 export const findAssignmentsForCourse = async (courseId: string) => {
   const { data } = await axiosWithCredentials.get(
-    `${HTTP_SERVER}/api/courses/${courseId}/assignments`
+    `${HTTP_SERVER}/api/courses/${courseId}/assignments`,
   );
   return data;
 };
 
 export const createAssignmentForCourse = async (
   courseId: string,
-  assignment: Record<string, unknown>
+  assignment: Record<string, unknown>,
 ) => {
   const { data } = await axiosWithCredentials.post(
     `${HTTP_SERVER}/api/courses/${courseId}/assignments`,
-    assignment
+    assignment,
   );
   return data;
 };
@@ -29,10 +29,10 @@ export const deleteAssignmentOnServer = async (assignmentId: string) => {
 };
 
 export const updateAssignmentOnServer = async (
-  assignment: { _id: string } & Record<string, unknown>
+  assignment: { _id: string } & Record<string, unknown>,
 ) => {
   await axiosWithCredentials.put(
     `${ASSIGNMENTS_API}/${assignment._id}`,
-    assignment
+    assignment,
   );
 };

@@ -23,10 +23,10 @@ type Course = {
 export default function Dashboard() {
   const { courses } = useSelector((state: RootState) => state.coursesReducer);
   const { currentUser } = useSelector(
-    (state: RootState) => state.accountReducer
+    (state: RootState) => state.accountReducer,
   );
   const { enrollments } = useSelector(
-    (state: RootState) => state.enrollmentsReducer
+    (state: RootState) => state.enrollmentsReducer,
   );
   const dispatch = useDispatch();
   const [showAllCourses, setShowAllCourses] = useState(false);
@@ -79,9 +79,7 @@ export default function Dashboard() {
 
   const onUpdateCourse = async () => {
     await client.updateCourse(course);
-    dispatch(
-      setCourses(list.map((c) => (c._id === course._id ? course : c)))
-    );
+    dispatch(setCourses(list.map((c) => (c._id === course._id ? course : c))));
   };
 
   const handleEnroll = async (courseId: string) => {
@@ -99,7 +97,11 @@ export default function Dashboard() {
   return (
     <div className="p-4" id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
-      <Button className="float-end" variant="primary" onClick={toggleEnrollmentsView}>
+      <Button
+        className="float-end"
+        variant="primary"
+        onClick={toggleEnrollmentsView}
+      >
         Enrollments
       </Button>
       <hr />
@@ -139,16 +141,14 @@ export default function Dashboard() {
           <hr />
         </>
       )}
-      <h2 id="wd-dashboard-published">
-        Published Courses ({list.length})
-      </h2>
+      <h2 id="wd-dashboard-published">Published Courses ({list.length})</h2>
       <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
           {list.map((c) => {
             const enrList = enrollments as { user: string; course: string }[];
             const isEnrolled = enrList.some(
-              (e) => e.user === currentUser?._id && e.course === c._id
+              (e) => e.user === currentUser?._id && e.course === c._id,
             );
             return (
               <Col
@@ -204,8 +204,9 @@ export default function Dashboard() {
                         </button>
                       </>
                     )}
-                    {showAllCourses && currentUser && (
-                      isEnrolled ? (
+                    {showAllCourses &&
+                      currentUser &&
+                      (isEnrolled ? (
                         <Button
                           variant="danger"
                           className="mt-2 w-100"
@@ -227,8 +228,7 @@ export default function Dashboard() {
                         >
                           Enroll
                         </Button>
-                      )
-                    )}
+                      ))}
                   </Card.Body>
                 </Card>
               </Col>
