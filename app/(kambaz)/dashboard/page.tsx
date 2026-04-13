@@ -96,35 +96,41 @@ export default function Dashboard() {
 
   return (
     <div className="p-4" id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
-      <Button
-        className="float-end"
-        variant="primary"
-        onClick={toggleEnrollmentsView}
-      >
-        Enrollments
-      </Button>
+      <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h1 id="wd-dashboard-title" className="mb-0">
+          Dashboard
+        </h1>
+        {!isFaculty && (
+          <Button variant="primary" onClick={toggleEnrollmentsView}>
+            Enrollments
+          </Button>
+        )}
+      </div>
       <hr />
       {isFaculty && (
         <>
-          <h5>
-            New Course
-            <Button
-              className="btn btn-primary float-end"
-              id="wd-add-new-course-click"
-              onClick={() => onAddNewCourse()}
-            >
-              Add
-            </Button>
-            <Button
-              className="btn btn-warning float-end me-2"
-              onClick={() => onUpdateCourse()}
-              id="wd-update-course-click"
-            >
-              Update
-            </Button>
-          </h5>
-          <br />
+          <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-2">
+            <h5 className="mb-0">New Course</h5>
+            <div className="d-flex align-items-center gap-2 flex-shrink-0">
+              <Button
+                variant="warning"
+                id="wd-update-course-click"
+                onClick={() => onUpdateCourse()}
+              >
+                Update
+              </Button>
+              <Button
+                variant="primary"
+                id="wd-add-new-course-click"
+                onClick={() => onAddNewCourse()}
+              >
+                Add
+              </Button>
+              <Button variant="primary" onClick={toggleEnrollmentsView}>
+                Enrollments
+              </Button>
+            </div>
+          </div>
           <FormControl
             value={course.name}
             className="mb-2"

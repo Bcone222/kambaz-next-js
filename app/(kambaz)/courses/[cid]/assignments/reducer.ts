@@ -15,9 +15,15 @@ const assignmentsSlice = createSlice({
       }: { payload: { courseId: string; assignments: unknown[] } }
     ) => {
       const { courseId, assignments: incoming } = payload;
+      const tagged = incoming.map((a: any) => ({
+        ...a,
+        course: courseId,
+      }));
       state.assignments = [
-        ...state.assignments.filter((a: any) => a.course !== courseId),
-        ...incoming,
+        ...state.assignments.filter(
+          (a: any) => String(a.course) !== String(courseId)
+        ),
+        ...tagged,
       ] as any;
     },
     addAssignment: (state, { payload: assignment }: { payload: any }) => {

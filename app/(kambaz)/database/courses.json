@@ -7,7 +7,104 @@
     "endDate": "2023-05-15",
     "department": "D123",
     "credits": 4,
-    "description": "This course provides an in-depth study of the fundamentals of rocket propulsion, covering topics such as propulsion theory, engine types, fuel chemistry, and the practical applications of rocket technology. Designed for students with a strong background in physics and engineering, the course includes both theoretical instruction and hands-on laboratory work"
+    "description": "This course provides an in-depth study of the fundamentals of rocket propulsion, covering topics such as propulsion theory, engine types, fuel chemistry, and the practical applications of rocket technology. Designed for students with a strong background in physics and engineering, the course includes both theoretical instruction and hands-on laboratory work",
+    "modules": [
+      {
+        "_id": "M101",
+        "name": "Introduction to Rocket Propulsion",
+        "description": "Basic principles of rocket propulsion and rocket engines.",
+        "lessons": [
+          {
+            "_id": "L101",
+            "name": "History of Rocketry",
+            "description": "A brief history of rocketry and space exploration."
+          },
+          {
+            "_id": "L102",
+            "name": "Rocket Propulsion Fundamentals",
+            "description": "Basic principles of rocket propulsion."
+          },
+          {
+            "_id": "L103",
+            "name": "Rocket Engine Types",
+            "description": "Overview of different types of rocket engines."
+          }
+        ]
+      },
+      {
+        "_id": "M102",
+        "name": "Fuel and Combustion",
+        "description": "Understanding rocket fuel, combustion processes, and efficiency.",
+        "lessons": [
+          {
+            "_id": "L201",
+            "name": "Rocket Fuel",
+            "description": "Overview of different types of rocket fuels."
+          },
+          {
+            "_id": "L202",
+            "name": "Combustion Processes",
+            "description": "Understanding combustion processes and efficiency."
+          },
+          {
+            "_id": "L203",
+            "name": "Combustion Instability",
+            "description": "Understanding combustion instability and mitigation."
+          }
+        ]
+      },
+      {
+        "_id": "M103",
+        "name": "Nozzle Design",
+        "description": "Principles of rocket nozzle design and performance optimization.",
+        "lessons": [
+          {
+            "_id": "L301",
+            "name": "Nozzle Design",
+            "description": "Overview of different types of rocket nozzles."
+          },
+          {
+            "_id": "L302",
+            "name": "Nozzle Performance",
+            "description": "Understanding nozzle performance and efficiency."
+          },
+          {
+            "_id": "L303",
+            "name": "Nozzle Optimization",
+            "description": "Optimizing nozzle design for specific applications."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A101",
+        "title": "Propulsion Assignment",
+        "points": 100,
+        "description": "Propulsion assignment description.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A102",
+        "title": "Combustion Analysis",
+        "points": 100,
+        "description": "Combustion analysis description.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A103",
+        "title": "Nozzle Design Project",
+        "points": 100,
+        "description": "Nozzle design project description.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS102",
@@ -17,7 +114,104 @@
     "endDate": "2023-05-15",
     "department": "D123",
     "credits": 3,
-    "description": "This course offers a comprehensive exploration of aerodynamics, focusing on the principles and applications of airflow and its effects on flying objects. Topics include fluid dynamics, airfoil design, lift and drag forces, and the aerodynamic considerations in aircraft design. The course blends theoretical learning with practical applications, suitable for students pursuing a career in aeronautics or astronautics engineering."
+    "description": "This course offers a comprehensive exploration of aerodynamics, focusing on the principles and applications of airflow and its effects on flying objects. Topics include fluid dynamics, airfoil design, lift and drag forces, and the aerodynamic considerations in aircraft design. The course blends theoretical learning with practical applications, suitable for students pursuing a career in aeronautics or astronautics engineering.",
+    "modules": [
+      {
+        "_id": "M201",
+        "name": "Fundamentals of Aerodynamics",
+        "description": "Basic aerodynamic concepts and fluid dynamics principles.",
+        "lessons": [
+          {
+            "_id": "L401",
+            "name": "Fluid Dynamics Basics",
+            "description": "Introduction to fluid dynamics and flow principles."
+          },
+          {
+            "_id": "L402",
+            "name": "Lift and Drag Forces",
+            "description": "Understanding lift and drag forces in aerodynamics."
+          },
+          {
+            "_id": "L403",
+            "name": "Bernoulli's Principle",
+            "description": "Application of Bernoulli's principle in aerodynamic design."
+          }
+        ]
+      },
+      {
+        "_id": "M202",
+        "name": "Subsonic and Supersonic Flow",
+        "description": "Understanding subsonic and supersonic aerodynamic behaviors.",
+        "lessons": [
+          {
+            "_id": "L404",
+            "name": "Subsonic Flow Characteristics",
+            "description": "Properties and behavior of subsonic airflow."
+          },
+          {
+            "_id": "L405",
+            "name": "Supersonic Flow Dynamics",
+            "description": "Understanding supersonic flow and shock waves."
+          },
+          {
+            "_id": "L406",
+            "name": "Transonic Regime",
+            "description": "Analysis of transonic flow and its challenges."
+          }
+        ]
+      },
+      {
+        "_id": "M203",
+        "name": "Aerodynamic Heating",
+        "description": "Study of aerodynamic heating and thermal protection systems.",
+        "lessons": [
+          {
+            "_id": "L407",
+            "name": "Heat Transfer in Aerodynamics",
+            "description": "Principles of heat transfer in high-speed flight."
+          },
+          {
+            "_id": "L408",
+            "name": "Thermal Protection Systems",
+            "description": "Design and implementation of thermal protection systems."
+          },
+          {
+            "_id": "L409",
+            "name": "Re-entry Heating",
+            "description": "Aerodynamic heating during atmospheric re-entry."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A201",
+        "title": "Aerodynamics Quiz",
+        "points": 100,
+        "description": "Aerodynamics quiz description.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A202",
+        "title": "Flow Analysis",
+        "points": 100,
+        "description": "Flow analysis description.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A203",
+        "title": "Heating Analysis",
+        "points": 100,
+        "description": "Heating analysis description.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS103",
@@ -27,7 +221,104 @@
     "endDate": "2023-05-15",
     "department": "D123",
     "credits": 4,
-    "description": "This course delves into the principles and practices of spacecraft design, offering students a detailed understanding of the engineering and technology behind spacecraft systems. Key topics include spacecraft structure, propulsion, power systems, thermal control, and payload integration. Emphasizing both theoretical concepts and practical skills, the course prepares students for careers in the space industry, with a focus on innovative design and problem-solving in the context of current and future space missions"
+    "description": "This course delves into the principles and practices of spacecraft design, offering students a detailed understanding of the engineering and technology behind spacecraft systems. Key topics include spacecraft structure, propulsion, power systems, thermal control, and payload integration. Emphasizing both theoretical concepts and practical skills, the course prepares students for careers in the space industry, with a focus on innovative design and problem-solving in the context of current and future space missions",
+    "modules": [
+      {
+        "_id": "M301",
+        "name": "Spacecraft Structural Design",
+        "description": "Fundamentals of designing spacecraft structures and materials selection.",
+        "lessons": [
+          {
+            "_id": "L501",
+            "name": "Structural Materials",
+            "description": "Selection of materials for spacecraft structures."
+          },
+          {
+            "_id": "L502",
+            "name": "Load Analysis",
+            "description": "Understanding structural loads and stress analysis."
+          },
+          {
+            "_id": "L503",
+            "name": "Structural Optimization",
+            "description": "Optimizing spacecraft structures for weight and strength."
+          }
+        ]
+      },
+      {
+        "_id": "M302",
+        "name": "Orbital Mechanics",
+        "description": "Understanding orbital dynamics and mission planning.",
+        "lessons": [
+          {
+            "_id": "L504",
+            "name": "Kepler's Laws",
+            "description": "Fundamental laws governing orbital motion."
+          },
+          {
+            "_id": "L505",
+            "name": "Orbital Maneuvers",
+            "description": "Techniques for changing orbital parameters."
+          },
+          {
+            "_id": "L506",
+            "name": "Mission Planning",
+            "description": "Planning orbital missions and trajectories."
+          }
+        ]
+      },
+      {
+        "_id": "M303",
+        "name": "Spacecraft Systems Engineering",
+        "description": "Overview of spacecraft systems and subsystems engineering.",
+        "lessons": [
+          {
+            "_id": "L507",
+            "name": "Power Systems",
+            "description": "Design and operation of spacecraft power systems."
+          },
+          {
+            "_id": "L508",
+            "name": "Communication Systems",
+            "description": "Spacecraft communication and data transmission."
+          },
+          {
+            "_id": "L509",
+            "name": "Life Support Systems",
+            "description": "Environmental control and life support systems."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A301",
+        "title": "Structural Design Task",
+        "points": 100,
+        "description": "Structural design task description.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A302",
+        "title": "Orbital Calculations",
+        "points": 100,
+        "description": "Orbital calculations description.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A303",
+        "title": "Systems Engineering Exam",
+        "points": 100,
+        "description": "Systems engineering exam description.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS104",
@@ -37,7 +328,104 @@
     "endDate": "2023-05-15",
     "department": "D134",
     "credits": 3,
-    "description": "Organic Chemistry is an in-depth course that explores the structure, properties, composition, and reactions of organic compounds and materials. The course covers various topics including hydrocarbons, functional groups, stereochemistry, and organic synthesis techniques. Students will learn about the mechanisms of organic reactions, spectroscopic methods for structure determination, and the role of organic chemistry in biological systems. Emphasis is placed on problem-solving and laboratory skills, preparing students for advanced studies in chemistry, medicine, and related fields."
+    "description": "Organic Chemistry is an in-depth course that explores the structure, properties, composition, and reactions of organic compounds and materials. The course covers various topics including hydrocarbons, functional groups, stereochemistry, and organic synthesis techniques. Students will learn about the mechanisms of organic reactions, spectroscopic methods for structure determination, and the role of organic chemistry in biological systems. Emphasis is placed on problem-solving and laboratory skills, preparing students for advanced studies in chemistry, medicine, and related fields.",
+    "modules": [
+      {
+        "_id": "M401",
+        "name": "Hydrocarbons and Alkanes",
+        "description": "Introduction to hydrocarbons and saturated compounds.",
+        "lessons": [
+          {
+            "_id": "L601",
+            "name": "Introduction to Hydrocarbons",
+            "description": "Basic structure and classification of hydrocarbons."
+          },
+          {
+            "_id": "L602",
+            "name": "Alkane Nomenclature",
+            "description": "Naming conventions for alkanes and branched chains."
+          },
+          {
+            "_id": "L603",
+            "name": "Alkane Reactions",
+            "description": "Common reactions of alkanes including combustion and substitution."
+          }
+        ]
+      },
+      {
+        "_id": "M402",
+        "name": "Functional Groups",
+        "description": "Study of organic functional groups and their properties.",
+        "lessons": [
+          {
+            "_id": "L604",
+            "name": "Alcohols and Ethers",
+            "description": "Structure, properties, and reactions of alcohols and ethers."
+          },
+          {
+            "_id": "L605",
+            "name": "Aldehydes and Ketones",
+            "description": "Carbonyl compounds and their characteristic reactions."
+          },
+          {
+            "_id": "L606",
+            "name": "Carboxylic Acids",
+            "description": "Acid-base properties and reactions of carboxylic acids."
+          }
+        ]
+      },
+      {
+        "_id": "M403",
+        "name": "Stereochemistry",
+        "description": "Three-dimensional structure and isomerism in organic molecules.",
+        "lessons": [
+          {
+            "_id": "L607",
+            "name": "Chirality and Enantiomers",
+            "description": "Understanding chiral centers and enantiomeric relationships."
+          },
+          {
+            "_id": "L608",
+            "name": "Diastereomers",
+            "description": "Diastereomeric relationships and meso compounds."
+          },
+          {
+            "_id": "L609",
+            "name": "Optical Activity",
+            "description": "Measurement and interpretation of optical rotation."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A401",
+        "title": "Hydrocarbon Nomenclature",
+        "points": 100,
+        "description": "Practice naming organic compounds and identifying structures.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A402",
+        "title": "Functional Group Reactions",
+        "points": 100,
+        "description": "Analysis of reactions involving different functional groups.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A403",
+        "title": "Stereochemistry Lab Report",
+        "points": 100,
+        "description": "Laboratory report on stereochemical analysis of organic compounds.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS105",
@@ -47,7 +435,104 @@
     "endDate": "2023-05-15",
     "department": "D134",
     "credits": 3,
-    "description": "Inorganic Chemistry focuses on the properties, structures, and behaviors of inorganic and organometallic compounds. This course covers a range of topics including coordination chemistry, metal complexes, bonding theories, symmetry, and crystal field theory. Students will also explore the role of inorganic chemistry in real-world applications such as catalysis, materials science, and bioinorganic processes. Laboratory work emphasizes synthesis and analysis of inorganic compounds, fostering a deeper understanding of theoretical concepts."
+    "description": "Inorganic Chemistry focuses on the properties, structures, and behaviors of inorganic and organometallic compounds. This course covers a range of topics including coordination chemistry, metal complexes, bonding theories, symmetry, and crystal field theory. Students will also explore the role of inorganic chemistry in real-world applications such as catalysis, materials science, and bioinorganic processes. Laboratory work emphasizes synthesis and analysis of inorganic compounds, fostering a deeper understanding of theoretical concepts.",
+    "modules": [
+      {
+        "_id": "M501",
+        "name": "Coordination Chemistry",
+        "description": "Metal complexes and coordination compounds.",
+        "lessons": [
+          {
+            "_id": "L701",
+            "name": "Coordination Compounds",
+            "description": "Structure and bonding in coordination complexes."
+          },
+          {
+            "_id": "L702",
+            "name": "Ligands and Chelation",
+            "description": "Types of ligands and chelating agents."
+          },
+          {
+            "_id": "L703",
+            "name": "Coordination Number and Geometry",
+            "description": "Predicting geometry based on coordination number."
+          }
+        ]
+      },
+      {
+        "_id": "M502",
+        "name": "Crystal Field Theory",
+        "description": "Electronic structure and properties of transition metal complexes.",
+        "lessons": [
+          {
+            "_id": "L704",
+            "name": "Crystal Field Splitting",
+            "description": "Energy level splitting in octahedral and tetrahedral fields."
+          },
+          {
+            "_id": "L705",
+            "name": "High and Low Spin Complexes",
+            "description": "Factors determining spin state in transition metal complexes."
+          },
+          {
+            "_id": "L706",
+            "name": "Color and Magnetism",
+            "description": "Relationship between electronic structure and observable properties."
+          }
+        ]
+      },
+      {
+        "_id": "M503",
+        "name": "Organometallic Chemistry",
+        "description": "Compounds containing metal-carbon bonds.",
+        "lessons": [
+          {
+            "_id": "L707",
+            "name": "Organometallic Compounds",
+            "description": "Introduction to metal-carbon bonding."
+          },
+          {
+            "_id": "L708",
+            "name": "Catalysis",
+            "description": "Organometallic compounds in catalytic processes."
+          },
+          {
+            "_id": "L709",
+            "name": "Bioinorganic Chemistry",
+            "description": "Role of metals in biological systems."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A501",
+        "title": "Coordination Complex Analysis",
+        "points": 100,
+        "description": "Analysis of coordination compounds and their properties.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A502",
+        "title": "Crystal Field Theory Problems",
+        "points": 100,
+        "description": "Problem set on crystal field theory and electronic structure.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A503",
+        "title": "Organometallic Synthesis",
+        "points": 100,
+        "description": "Laboratory synthesis and characterization of organometallic compounds.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS106",
@@ -57,7 +542,104 @@
     "endDate": "2023-05-15",
     "department": "D134",
     "credits": 3,
-    "description": "Physical Chemistry merges the principles of physics and chemistry to understand the physical properties of molecules, the forces that act upon them, and the chemical reactions they undergo. Key topics include thermodynamics, kinetics, quantum mechanics, and spectroscopy. The course provides a comprehensive understanding of molecular behavior, reaction dynamics, and the application of mathematical methods in solving chemical problems. Labs focus on experimental techniques and data analysis, equipping students with skills necessary for research and advanced study in chemistry and related fields."
+    "description": "Physical Chemistry merges the principles of physics and chemistry to understand the physical properties of molecules, the forces that act upon them, and the chemical reactions they undergo. Key topics include thermodynamics, kinetics, quantum mechanics, and spectroscopy. The course provides a comprehensive understanding of molecular behavior, reaction dynamics, and the application of mathematical methods in solving chemical problems. Labs focus on experimental techniques and data analysis, equipping students with skills necessary for research and advanced study in chemistry and related fields.",
+    "modules": [
+      {
+        "_id": "M601",
+        "name": "Thermodynamics",
+        "description": "Energy relationships in chemical systems.",
+        "lessons": [
+          {
+            "_id": "L801",
+            "name": "First Law of Thermodynamics",
+            "description": "Energy conservation and internal energy."
+          },
+          {
+            "_id": "L802",
+            "name": "Entropy and Second Law",
+            "description": "Spontaneity and entropy changes in reactions."
+          },
+          {
+            "_id": "L803",
+            "name": "Gibbs Free Energy",
+            "description": "Predicting reaction spontaneity using free energy."
+          }
+        ]
+      },
+      {
+        "_id": "M602",
+        "name": "Chemical Kinetics",
+        "description": "Rates of chemical reactions and reaction mechanisms.",
+        "lessons": [
+          {
+            "_id": "L804",
+            "name": "Reaction Rates",
+            "description": "Measuring and expressing reaction rates."
+          },
+          {
+            "_id": "L805",
+            "name": "Rate Laws",
+            "description": "Determining rate laws from experimental data."
+          },
+          {
+            "_id": "L806",
+            "name": "Reaction Mechanisms",
+            "description": "Elementary steps and reaction pathways."
+          }
+        ]
+      },
+      {
+        "_id": "M603",
+        "name": "Quantum Mechanics",
+        "description": "Quantum mechanical description of atoms and molecules.",
+        "lessons": [
+          {
+            "_id": "L807",
+            "name": "Wave Functions",
+            "description": "Quantum mechanical description of electrons."
+          },
+          {
+            "_id": "L808",
+            "name": "Molecular Orbitals",
+            "description": "Bonding in molecules using molecular orbital theory."
+          },
+          {
+            "_id": "L809",
+            "name": "Spectroscopy",
+            "description": "Interaction of light with matter and spectroscopic techniques."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A601",
+        "title": "Thermodynamics Problem Set",
+        "points": 100,
+        "description": "Calculations involving entropy, enthalpy, and free energy.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A602",
+        "title": "Kinetics Lab Report",
+        "points": 100,
+        "description": "Experimental determination of reaction rates and mechanisms.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A603",
+        "title": "Quantum Mechanics Exam",
+        "points": 100,
+        "description": "Comprehensive exam on quantum mechanical principles in chemistry.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS107",
@@ -67,7 +649,105 @@
     "endDate": "2023-05-15",
     "department": "Languages",
     "credits": 3,
-    "description": "This course offers an exploration of the ancient languages and scripts found throughout Middle-earth, including Elvish (Sindarin and Quenya), Dwarvish (Khuzdul), and the Black Speech of Mordor. Students will learn the historical and cultural contexts of these languages, their linguistic structures, and their usage in various inscriptions and texts. Emphasis is on understanding the philological aspects and the role of language in shaping Middle-earth's history and lore."
+    "description": "This course offers an exploration of the ancient languages and scripts found throughout Middle-earth, including Elvish (Sindarin and Quenya), Dwarvish (Khuzdul), and the Black Speech of Mordor. Students will learn the historical and cultural contexts of these languages, their linguistic structures, and their usage in various inscriptions and texts. Emphasis is on understanding the philological aspects and the role of language in shaping Middle-earth's history and lore.",
+    "author": "654f9ec2ea7ead465908d1e3",
+    "modules": [
+      {
+        "_id": "M701",
+        "name": "Elvish Languages",
+        "description": "Study of Sindarin and Quenya languages.",
+        "lessons": [
+          {
+            "_id": "L901",
+            "name": "Sindarin Grammar",
+            "description": "Grammatical structure and syntax of Sindarin."
+          },
+          {
+            "_id": "L902",
+            "name": "Quenya Phonology",
+            "description": "Sound system and pronunciation of Quenya."
+          },
+          {
+            "_id": "L903",
+            "name": "Elvish Scripts",
+            "description": "Tengwar and Cirth writing systems."
+          }
+        ]
+      },
+      {
+        "_id": "M702",
+        "name": "Dwarvish and Other Languages",
+        "description": "Khuzdul and other languages of Middle-earth.",
+        "lessons": [
+          {
+            "_id": "L904",
+            "name": "Khuzdul Structure",
+            "description": "Linguistic features of Dwarvish language."
+          },
+          {
+            "_id": "L905",
+            "name": "Black Speech",
+            "description": "The language of Mordor and its origins."
+          },
+          {
+            "_id": "L906",
+            "name": "Westron and Common Speech",
+            "description": "The lingua franca of Middle-earth."
+          }
+        ]
+      },
+      {
+        "_id": "M703",
+        "name": "Historical Context",
+        "description": "Cultural and historical significance of Middle-earth languages.",
+        "lessons": [
+          {
+            "_id": "L907",
+            "name": "Language and Culture",
+            "description": "Relationship between language and cultural identity."
+          },
+          {
+            "_id": "L908",
+            "name": "Ancient Inscriptions",
+            "description": "Analysis of historical texts and inscriptions."
+          },
+          {
+            "_id": "L909",
+            "name": "Philological Methods",
+            "description": "Linguistic analysis and reconstruction techniques."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A701",
+        "title": "Elvish Translation Project",
+        "points": 100,
+        "description": "Translate passages between Sindarin and Quenya.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A702",
+        "title": "Script Analysis",
+        "points": 100,
+        "description": "Analysis of Tengwar and Cirth inscriptions from Middle-earth texts.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A703",
+        "title": "Philological Research Paper",
+        "points": 100,
+        "description": "Research paper on the historical development of a Middle-earth language.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   },
   {
     "_id": "RS108",
@@ -77,6 +757,104 @@
     "endDate": "2023-05-15",
     "department": "Political Studies",
     "credits": 4,
-    "description": "This course explores the complex relationships and diplomatic interactions among the different races of Middle-earth: Elves, Men, Dwarves, and Wizards. Topics include the study of historical alliances, conflicts, and the role of leadership and wisdom in maintaining peace. Students will engage in discussions and case studies on key events in Middle-earth's history, such as the Council of Elrond and the War of the Ring, to understand the principles of diplomacy and conflict resolution in a multi-species context."
+    "description": "This course explores the complex relationships and diplomatic interactions among the different races of Middle-earth: Elves, Men, Dwarves, and Wizards. Topics include the study of historical alliances, conflicts, and the role of leadership and wisdom in maintaining peace. Students will engage in discussions and case studies on key events in Middle-earth's history, such as the Council of Elrond and the War of the Ring, to understand the principles of diplomacy and conflict resolution in a multi-species context.",
+    "author": "654f9ec2ea7ead465908d1e3",
+    "modules": [
+      {
+        "_id": "M801",
+        "name": "Historical Alliances",
+        "description": "Study of major alliances in Middle-earth history.",
+        "lessons": [
+          {
+            "_id": "L1001",
+            "name": "Last Alliance",
+            "description": "The alliance of Elves and Men against Sauron."
+          },
+          {
+            "_id": "L1002",
+            "name": "Fellowship of the Ring",
+            "description": "Multi-species cooperation in the Third Age."
+          },
+          {
+            "_id": "L1003",
+            "name": "Council of Elrond",
+            "description": "Diplomatic gathering and decision-making processes."
+          }
+        ]
+      },
+      {
+        "_id": "M802",
+        "name": "Conflict Resolution",
+        "description": "Methods of resolving disputes between different races.",
+        "lessons": [
+          {
+            "_id": "L1004",
+            "name": "Mediation Techniques",
+            "description": "Role of wise leaders in mediating conflicts."
+          },
+          {
+            "_id": "L1005",
+            "name": "Treaty Negotiations",
+            "description": "Formal agreements and treaty-making processes."
+          },
+          {
+            "_id": "L1006",
+            "name": "Cultural Understanding",
+            "description": "Importance of understanding different cultural perspectives."
+          }
+        ]
+      },
+      {
+        "_id": "M803",
+        "name": "Leadership and Wisdom",
+        "description": "Qualities of effective leadership in multi-species contexts.",
+        "lessons": [
+          {
+            "_id": "L1007",
+            "name": "Elven Wisdom",
+            "description": "Leadership principles from Elven traditions."
+          },
+          {
+            "_id": "L1008",
+            "name": "Human Leadership",
+            "description": "Kingship and governance in human societies."
+          },
+          {
+            "_id": "L1009",
+            "name": "Wizard Guidance",
+            "description": "Role of Wizards as advisors and guides."
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "_id": "A801",
+        "title": "Alliance Case Study",
+        "points": 100,
+        "description": "Case study analysis of a historical alliance in Middle-earth.",
+        "dueDate": "2026-05-13",
+        "availableFrom": "2026-05-06",
+        "availableUntil": "2026-05-20"
+      },
+      {
+        "_id": "A802",
+        "title": "Conflict Resolution Essay",
+        "points": 100,
+        "description": "Essay on diplomatic strategies used to resolve inter-species conflicts.",
+        "dueDate": "2026-05-20",
+        "availableFrom": "2026-05-13",
+        "availableUntil": "2026-05-27"
+      },
+      {
+        "_id": "A803",
+        "title": "Leadership Analysis",
+        "points": 100,
+        "description": "Analysis of leadership qualities demonstrated by key figures in Middle-earth.",
+        "dueDate": "2026-05-27",
+        "availableFrom": "2026-05-20",
+        "availableUntil": "2026-06-03"
+      }
+    ]
   }
 ]

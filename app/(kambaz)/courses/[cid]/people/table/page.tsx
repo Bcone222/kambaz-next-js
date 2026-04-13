@@ -3,21 +3,16 @@
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import PeopleTable from "../Table";
-import * as client from "../../../../account/client";
-import { enrollments } from "../../../../database";
+import * as coursesClient from "../../../client";
 
 export default function CoursePeopleTablePage() {
   const { cid } = useParams();
   const [users, setUsers] = useState<any[]>([]);
 
   const fetchUsers = useCallback(async () => {
-    const all = await client.findAllUsers();
-    const filtered = all.filter((u: any) =>
-      enrollments.some(
-        (e: any) => e.user === u._id && e.course === cid
-      )
-    );
-    setUsers(filtered);
+    if (!cid) return;
+    const list = await coursesClient.findUsersForCourse(cid as string);
+    setUsers(list);
   }, [cid]);
 
   useEffect(() => {

@@ -45,7 +45,7 @@ export default function Modules() {
 
   const onCreateModuleForCourse = async () => {
     if (!cid) return;
-    const newModule = { name: moduleName, course: cid as string };
+    const newModule = { name: moduleName };
     const created = (await client.createModuleForCourse(
       cid as string,
       newModule
@@ -55,7 +55,8 @@ export default function Modules() {
   };
 
   const onRemoveModule = async (moduleId: string) => {
-    await client.deleteModule(moduleId);
+    if (!cid) return;
+    await client.deleteModule(cid as string, moduleId);
     dispatch(
       setModules(
         (modules as ModuleRow[]).filter((m) => m._id !== moduleId)
@@ -64,9 +65,10 @@ export default function Modules() {
   };
 
   const onUpdateModule = async (module: ModuleRow) => {
+    if (!cid) return;
     const { editing, ...payload } = module;
     void editing;
-    await client.updateModuleOnServer(payload as ModuleRow);
+    await client.updateModuleOnServer(cid as string, payload as ModuleRow);
     const newModules = (modules as ModuleRow[]).map((m) =>
       m._id === module._id ? module : m
     );
@@ -86,9 +88,7 @@ export default function Modules() {
       )}
       <br />
       <ListGroup id="wd-modules" className="rounded-0">
-        {(modules as ModuleRow[])
-          .filter((module) => module.course === cid)
-          .map((module) => (
+        {(modules as ModuleRow[]).map((module) => (
             <ListGroupItem
               key={module._id}
               className="wd-module p-0 mb-5 fs-5 border-gray"

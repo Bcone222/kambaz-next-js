@@ -9,7 +9,7 @@ import { FaSearch, FaPlus, FaEllipsisV } from "react-icons/fa";
 import { BsGripVertical, BsFileEarmarkText } from "react-icons/bs";
 import GreenCheckmark from "../modules/GreenCheckmark";
 import { useState, useEffect, useCallback } from "react";
-import * as client from "./client";
+import * as client from "../../client";
 
 const CAN_EDIT_ASSIGNMENTS_ROLES = ["FACULTY", "ADMIN", "TA"];
 
@@ -52,8 +52,11 @@ export default function Assignments() {
   };
 
   const confirmDelete = async () => {
-    if (assignmentToDelete) {
-      await client.deleteAssignmentOnServer(assignmentToDelete);
+    if (assignmentToDelete && cid) {
+      await client.deleteAssignmentOnServer(
+        cid as string,
+        assignmentToDelete
+      );
       dispatch(deleteAssignment(assignmentToDelete));
     }
     setShowDeleteDialog(false);

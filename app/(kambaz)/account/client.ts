@@ -13,7 +13,7 @@ export type Credentials = {
 export const signin = async (credentials: Credentials) => {
   const response = await axiosWithCredentials.post(
     `${USERS_API}/signin`,
-    credentials
+    credentials,
   );
   return response.data;
 };
@@ -33,31 +33,31 @@ export const signout = async () => {
 };
 
 export const updateUser = async (
-  user: { _id: string } & Record<string, unknown>
+  user: { _id: string } & Record<string, unknown>,
 ) => {
   const response = await axiosWithCredentials.put(
     `${USERS_API}/${user._id}`,
-    user
+    user,
   );
   return response.data;
 };
 
 export const fetchMyEnrollments = async () => {
   const { data } = await axiosWithCredentials.get(
-    `${USERS_API}/current/enrollments`
+    `${USERS_API}/current/enrollments`,
   );
   return data;
 };
 
 export const enrollInCourse = async (courseId: string) => {
-  await axiosWithCredentials.post(`${USERS_API}/current/enrollments`, {
-    courseId,
-  });
+  await axiosWithCredentials.post(
+    `${USERS_API}/current/courses/${encodeURIComponent(courseId)}`,
+  );
 };
 
 export const unenrollFromCourse = async (courseId: string) => {
   await axiosWithCredentials.delete(
-    `${USERS_API}/current/enrollments/${courseId}`
+    `${USERS_API}/current/courses/${encodeURIComponent(courseId)}`,
   );
 };
 
@@ -68,14 +68,14 @@ export const findAllUsers = async () => {
 
 export const findUsersByRole = async (role: string) => {
   const response = await axiosWithCredentials.get(
-    `${USERS_API}?role=${encodeURIComponent(role)}`
+    `${USERS_API}?role=${encodeURIComponent(role)}`,
   );
   return response.data;
 };
 
 export const findUsersByPartialName = async (name: string) => {
   const response = await axiosWithCredentials.get(
-    `${USERS_API}?name=${encodeURIComponent(name)}`
+    `${USERS_API}?name=${encodeURIComponent(name)}`,
   );
   return response.data;
 };
@@ -91,8 +91,6 @@ export const createUser = async (user: Record<string, unknown>) => {
 };
 
 export const deleteUser = async (userId: string) => {
-  const response = await axiosWithCredentials.delete(
-    `${USERS_API}/${userId}`
-  );
+  const response = await axiosWithCredentials.delete(`${USERS_API}/${userId}`);
   return response.data;
 };

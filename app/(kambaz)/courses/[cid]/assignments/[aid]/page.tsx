@@ -9,7 +9,7 @@ import {
 } from "../reducer";
 import { useState, useEffect } from "react";
 import { FormControl, Button } from "react-bootstrap";
-import * as client from "../client";
+import * as client from "../../../client";
 
 const CAN_EDIT_ASSIGNMENTS_ROLES = ["FACULTY", "ADMIN", "TA"];
 
@@ -85,10 +85,10 @@ export default function AssignmentEditor() {
         cid as string,
         createPayload
       );
-      dispatch(addAssignment(created));
+      dispatch(addAssignment({ ...created, course: cid }));
     } else {
-      await client.updateAssignmentOnServer(assignment);
-      dispatch(updateAssignment(assignment));
+      await client.updateAssignmentOnServer(cid as string, assignment);
+      dispatch(updateAssignment({ ...assignment, course: cid }));
     }
     router.push(`/courses/${cid}/assignments`);
   };
