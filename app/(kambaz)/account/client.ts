@@ -42,6 +42,7 @@ export const updateUser = async (
   return response.data;
 };
 
+/** GET — list enrollment rows for the logged-in user (not enroll/unenroll actions). */
 export const fetchMyEnrollments = async () => {
   const { data } = await axiosWithCredentials.get(
     `${USERS_API}/current/enrollments`,
@@ -50,15 +51,17 @@ export const fetchMyEnrollments = async () => {
 };
 
 export const enrollInCourse = async (courseId: string) => {
-  await axiosWithCredentials.post(
-    `${USERS_API}/current/courses/${encodeURIComponent(courseId)}`,
+  const response = await axiosWithCredentials.post(
+    `${USERS_API}/current/courses/${courseId}`,
   );
+  return response.data;
 };
 
 export const unenrollFromCourse = async (courseId: string) => {
-  await axiosWithCredentials.delete(
-    `${USERS_API}/current/courses/${encodeURIComponent(courseId)}`,
+  const response = await axiosWithCredentials.delete(
+    `${USERS_API}/current/courses/${courseId}`,
   );
+  return response.data;
 };
 
 export const findAllUsers = async () => {

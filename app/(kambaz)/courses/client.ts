@@ -72,23 +72,6 @@ export const updateModuleOnServer = async (
   return response.data;
 };
 
-export const enrollIntoCourse = async (userId: string, courseId: string) => {
-  const response = await axiosWithCredentials.post(
-    `${USERS_API}/${userId}/courses/${encodeURIComponent(courseId)}`
-  );
-  return response.data;
-};
-
-export const unenrollFromCourseByUser = async (
-  userId: string,
-  courseId: string
-) => {
-  const response = await axiosWithCredentials.delete(
-    `${USERS_API}/${userId}/courses/${encodeURIComponent(courseId)}`
-  );
-  return response.data;
-};
-
 export const findUsersForCourse = async (courseId: string) => {
   const response = await axiosWithCredentials.get(
     `${COURSES_API}/${encodeURIComponent(courseId)}/users`
