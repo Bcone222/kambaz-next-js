@@ -29,6 +29,11 @@ export default function CourseNavigation() {
     if (link === "People") {
       return pathname?.includes("/people");
     }
+    if (link === "Quizzes") {
+      return (
+        !!cid && !!pathname?.startsWith(`/courses/${cid}/quizzes`)
+      );
+    }
     return pathname?.includes(`/${link.toLowerCase()}`);
   };
 
